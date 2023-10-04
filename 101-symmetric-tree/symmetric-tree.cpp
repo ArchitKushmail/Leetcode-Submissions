@@ -12,10 +12,10 @@
 class Solution {
 public:
     bool isEqual(TreeNode* left , TreeNode* right){
-      if (!left && !right)
+      if (left == NULL && right == NULL )
             return true;
         
-        if (!left || !right || left->val != right->val)
+        if (left ==NULL || right == NULL || left->val != right->val)
             return false;
         
         return isEqual(left->left, right->right) && isEqual(left->right, right->left);
