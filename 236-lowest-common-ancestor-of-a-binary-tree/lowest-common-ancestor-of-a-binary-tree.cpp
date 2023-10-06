@@ -10,17 +10,14 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        
-        // Base-Case
+        // Base Case
         if(root==NULL){
             return NULL;
         }
-        
-        // Checking p and q.
         if(root->val==p->val){
             return p;
         }
-        if(root->val == q->val){
+        if(root->val==q->val){
             return q;
         }
         
@@ -29,13 +26,12 @@ public:
         
         if(leftans==NULL && rightans==NULL){
             return NULL;
-        }else if(leftans==NULL && rightans!=NULL){
+        }else if(leftans == NULL && rightans!=NULL){
             return rightans;
         }else if(leftans!=NULL && rightans==NULL){
             return leftans;
         }else{
-        return root;
-    
+            return root;
         }
     }
 };
