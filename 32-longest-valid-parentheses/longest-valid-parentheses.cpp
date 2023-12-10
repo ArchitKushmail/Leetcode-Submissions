@@ -2,26 +2,22 @@ class Solution {
 public:
     int longestValidParentheses(string s) {
         stack<int>st;
-        int maxLen = 0;
         st.push(-1);
-        for(int i = 0;i<s.length();i++){
+        int maxlength = 0;
+        for(int i=0;i<s.size();i++){
             char ch = s[i];
             if(ch=='('){
-                st.push(i);
-                
+                st.push(i);    
             }else{
                 st.pop();
-                // if stack is empty or not
-                if(st.empty()){
-                    st.push(i);
-                }else{
-                    // find length
+                if(!st.empty()){
                     int len = i - st.top();
-                    maxLen = max(maxLen,len);
+                    maxlength = max(len , maxlength);
+                }else{
+                    st.push(i);
                 }
-                    
             }
         }
-        return maxLen;
+        return maxlength;
     }
 };
