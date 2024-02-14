@@ -11,34 +11,39 @@
  */
 class Solution {
 public:
+    
     int height(TreeNode* root){
-    // Base case
-    if(root==NULL){
-        return 0;
+        // Base Case
+        if(root==NULL) return 0;
+        
+        int lh = height(root->left);
+        int rh = height(root->right);
+        int ans = 1+max(lh,rh);
+        return ans;
     }
-    int leftheight = height(root->left);
-    int rightheight = height(root->right);
-    int ans = 1 + max(leftheight,rightheight);
-    return ans; 
-}
+    
+    
     bool isBalanced(TreeNode* root) {
+        // Base Case
         if(root==NULL){
             return true;
         }
         
-        // One case we will solve
-        int leftheight = height(root->left);
-        int rightheight = height(root->right);
-        int diff = abs(leftheight-rightheight);
+        //1st case
+        int lh = height(root->left);
+        int rh = height(root->right);
+        int diff = abs(lh-rh);
         bool ans1 = (diff<=1);
         
-        // Call Recursion
-        int leftans = isBalanced(root->left);
-        int rightans = isBalanced(root->right);
-        if(ans1 && leftans && rightans){
+        bool lhans = isBalanced(root->left);
+        bool rhans = isBalanced(root->right);
+        
+        if(ans1 && lhans && rhans){
             return true;
         }else{
             return false;
         }
+        
+        
     }
 };
