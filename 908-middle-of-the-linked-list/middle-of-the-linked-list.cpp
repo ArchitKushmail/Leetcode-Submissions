@@ -11,13 +11,28 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-        ListNode* fast = head->next;
+        // Brute - Force TC: O(n)
+        
+        // int size_of_linkedlist = 0;
+        // ListNode* temp = head;
+        // while(temp!=NULL){
+        //     size_of_linkedlist++;
+        //     temp = temp->next;
+        // }
+        // int half_of_size = size_of_linkedlist/2;
+        // temp = head;
+        // while(half_of_size--){
+        //     temp = temp->next;
+        // }
+        // return temp;
+        
+        
+        // Optimised method Slow and fast pointer TC: O(n/2)
+        
+        ListNode* fast = head;
         ListNode* slow = head;
-        while(fast!=NULL){
-            fast = fast->next;
-            if(fast!=NULL){
-                fast = fast->next;
-            }
+        while(fast!=NULL && fast->next !=NULL){
+            fast = fast ->next->next;
             slow = slow->next;
         }
         return slow;
