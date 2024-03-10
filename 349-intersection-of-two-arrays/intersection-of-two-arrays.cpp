@@ -5,15 +5,8 @@ public:
         int size2 = nums2.size();
         vector<int>ans;
         
-        set<int>st1;
-        set<int>st2;
-        
-        for(int i = 0;i<size1;i++){
-            st1.insert(nums1[i]);
-        }
-        for(int i = 0;i<size2;i++){
-            st2.insert(nums2[i]);
-        }
+        set<int>st1(nums1.begin(),nums1.end());
+        set<int>st2(nums2.begin(),nums2.end());
         
         for(auto it1:st1){
             for(auto it2 : st2){
